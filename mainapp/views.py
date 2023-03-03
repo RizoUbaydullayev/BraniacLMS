@@ -1,7 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
-from django.template.loader import render_to_string
+
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView
 
@@ -26,11 +23,6 @@ class NewsCreateView(PermissionRequiredMixin, CreateView):
     fields = "__all__"
     success_url = reverse_lazy("mainapp:news")
     permission_required = ("mainapp.add_news",)
-
-
-class NewsDetailView(DetailView):
-    model = mainapp_models.News
-
 
 class NewsUpdateView(PermissionRequiredMixin, UpdateView):
     model = mainapp_models.News

@@ -29,6 +29,11 @@ class CoursesManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(deleted=False)
 
+    class Meta:
+        ordering = ("course", "num")
+        verbose_name = _("Lesson")
+        verbose_name_plural = _("Lessons")
+
 
 class Courses(models.Model):
     objects = CoursesManager()
